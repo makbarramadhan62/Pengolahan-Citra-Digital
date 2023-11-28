@@ -4,7 +4,7 @@ video = cv2.VideoCapture(0)  # untuk aktifin kamera realtime
 a = 0
 
 faceDetect = cv2.CascadeClassifier(
-    '../xml_aset/haarcascade_frontalface_default.xml')  # file untuk detect Haarcascade
+    './xml_asset/haarcascade_frontalface_default.xml')  # file untuk detect Haarcascade
 id = input('masukkan id user ')  # menginputkan nama id gambar
 
 while True:

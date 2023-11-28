@@ -1,13 +1,13 @@
 # from tkinter.font import names
 import cv2
 
-video = cv2.VideoCapture(0)  # untuk aktifin kamera realtime
+video = cv2.VideoCapture(0)
 a = 0
-# algo untuk recognizer yang disediakan OpenCV
+
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 faceDetect = cv2.CascadeClassifier(
-    '../xml_aset/haarcascade_frontalface_default.xml')  # file untuk detect Haarcascade
-recognizer.read('training/training.xml')  # membaca file hasil training
+    './xml_asset/haarcascade_frontalface_default.xml')
+recognizer.read('training/training.xml') 
 id = 0
 # format text
 fontFace = cv2.FONT_HERSHEY_SIMPLEX
@@ -15,10 +15,10 @@ fontScale = 1
 fontColor = (255, 255, 255)
 
 detect = int(input('masukkan id user '))
-names = ['Anda Siapa?', 'akbar', 'iqbal', 'ranti']
-asist = ['????', 'ASD, PBO', 'ASD, PBO', 'ASD']
+names = ['Anda Siapa?', 'akbar', 'iqbal', 'ranti', 'hisoka']
+asist = ['????', 'ASD, PBO', 'ASD, PBO', 'ASD', 'tidak ada']
 
-while True:  # perulangan untuk menandai wajah
+while True:
     check, frame = video.read()
     print(check)
     print(frame)
@@ -29,14 +29,12 @@ while True:  # perulangan untuk menandai wajah
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         id, conf = recognizer.predict(gray[y:y+h, x:x+w])
         if conf < 100:
-            if id == detect:  # isi label pada masing masing ID
+            if id == detect:
                 name = names[id]
                 asisten = asist[id]
-                # conf = " {0}%".format(round(150-conf))
             else:
                 name = "Anda Siapa?"
                 asisten = asist[0]
-                # conf = " {0}%".format(round(150-conf))
         else:
             name = "Anda Siapa?"
             asisten = asist[0]
@@ -51,5 +49,5 @@ while True:  # perulangan untuk menandai wajah
     if (cv2.waitKey(1) == ord('q')):
         break
     print(a)
-video.release()  # untuk menutup kamera
-cv2.destroyAllWindows()  # mematikan semua windows
+video.release()
+cv2.destroyAllWindows()

@@ -4,9 +4,9 @@ import os
 import numpy as np
 from PIL import Image 
 
-recognizer = cv2.face.LBPHFaceRecognizer_create() #algo untuk recognizer yang disediakan OpenCV
+recognizer = cv2.face.LBPHFaceRecognizer_create()
 detector = cv2.CascadeClassifier(
-    "../xml_aset/haarcascade_frontalface_default.xml") #nge detect file harcascade
+    "./xml_asset/haarcascade_frontalface_default.xml")
 
 
 def getImagesWithLabels(path): #fungsi untuk mempelajari pengenalan gambar dari setiap label (ID)
